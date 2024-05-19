@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-# Astro_Clash
 
 =======
 # Astro Clash

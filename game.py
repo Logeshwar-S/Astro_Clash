@@ -2,13 +2,15 @@ import pygame
 from pygame import mixer
 import random
 import time
-from tkinter import messagebox
-import sys
+
+## To set proper default values for frequency, channels and buffersize we call pygame.mixer.pre_init()
 
 pygame.mixer.pre_init(44100, -16, 2, 512)
 mixer.init()
 
 pygame.init()
+
+## Set window dimensions
 
 s_height = 1000
 s_width = 800
@@ -16,13 +18,16 @@ s_width = 800
 screen = pygame.display.set_mode((s_height,s_width))
 pygame.display.set_caption('Astro Clash')
 
-font_path = r'F:\Projects\Pygame\assets\PressStart2P-Regular.ttf'
+pygame_icon = pygame.image.load(r'F:\Projects\Pygame\assets\icon.png')
+pygame.display.set_icon(pygame_icon)
 
+## Font Assets
+
+font_path = r'F:\Projects\Pygame\assets\PressStart2P-Regular.ttf'
 font30 = pygame.font.Font(font_path, 30)
 font40 = pygame.font.Font(font_path, 40)
 
-pygame_icon = pygame.image.load(r'F:\Projects\Pygame\assets\icon.png')
-pygame.display.set_icon(pygame_icon)
+## Fx Assets
 
 laser_fx = pygame.mixer.Sound(r'F:\Projects\Pygame\assets\blaster.mp3')
 laser_fx.set_volume(0.4)
@@ -44,13 +49,15 @@ fps = 60
 
 countdown = 3
 points = 0
-last_count = pygame.time.get_ticks()
+last_count = pygame.time.get_ticks()  ## To set the timer
 
 
 red = (255,0 ,0)
 green = (0, 255, 0)
 yellow = (255, 255, 0)
 white = (255, 255, 255)
+
+## Function to restart the game
 
 def reset_game():
     global game_over, spacecraft, asteroid_group, blast_group ,start_time ,countdown, points
@@ -66,12 +73,15 @@ def reset_game():
     pygame.time.delay(2000)
     
 
-def draw_bg():
+## Draw background
+def draw_bg(): 
     screen.blit(background, (0, 0))
 
+# To display text
 def draw_text(text, font, text_col, x, y):
     img = font.render(text, True, text_col)
     screen.blit(img, (x, y))
+
 
 class Spacecraft(pygame.sprite.Sprite):
     def __init__(self, x, y):
@@ -107,6 +117,7 @@ class Spacecraft(pygame.sprite.Sprite):
             
             self.mask = pygame.mask.from_surface(self.image)
 
+
 class Lasers(pygame.sprite.Sprite):
 
     def __init__(self, x, y):
@@ -138,6 +149,9 @@ class Asteroids(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         
         self.reset_pos()
+
+    # Function to randomize asteroids falling
+    
     def reset_pos(self):
         
         self.rect.x = random.randint(0, 1000)
@@ -154,6 +168,7 @@ class Asteroids(pygame.sprite.Sprite):
                 game_over_fx.play()
                 game_over = True
         
+        # Mask is used for pinpoint collision
 
         self.mask = pygame.mask.from_surface(self.image)
         
@@ -161,6 +176,9 @@ class Asteroids(pygame.sprite.Sprite):
 class Blast(pygame.sprite.Sprite):
     def __init__(self, x ,y, size):
         pygame.sprite.Sprite.__init__(self)
+
+        # Loop to go through each explosion assets
+
         self.images = []
         for num in range(1,6):
             img = pygame.image.load(f'F:\Projects\Pygame\\assets\exp{num}.png')
@@ -191,10 +209,16 @@ class Blast(pygame.sprite.Sprite):
             self.kill()
 
 
+# Groups are used to manage collections of sprites efficiently.
+# They allow for batch updates and drawing, simplify collision detection,
+# and help keep the code organized and maintainable.
+
 spacecraft_group = pygame.sprite.Group()
 laser_group = pygame.sprite.Group()
 asteroid_group = pygame.sprite.Group()
 blast_group = pygame.sprite.Group()
+
+# Initializing
 
 spacecraft = Spacecraft(500,400)
 asteroid = Asteroids()
@@ -225,10 +249,11 @@ while run:
     asteroid_group.draw(screen)
     blast_group.draw(screen)
     
+    # Countdown used to prepare the user for starting the game
 
     if countdown == 0:
 
-        
+
         if game_over:
             draw_text('GAME OVER', font40, white, 330, 350)
             draw_text('Press R to retry', font30, white, 270, 420)

@@ -1,5 +1,4 @@
 
-=======
 # Astro Clash
 
 Astro Clash is an exciting space-themed game built using Pygame. Your mission is to navigate your spacecraft, shoot down asteroids, and survive as long as possible while accumulating points.

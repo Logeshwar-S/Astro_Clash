@@ -44,5 +44,5 @@ If you have any questions, suggestions, or feedback, please feel free to contact
 ## Acknowledgements
 
 1. Pygame for the game development library.
-2. Concept inspired from [russs123](https://github.com/russs123/space_invaders)
+2. Concept inspired from [russs123](https://github.com/russs123/space_invaders).
 >>>>>>> 1280ebcc20464d1f8e7baf1f75ef14c5c2cbeee5

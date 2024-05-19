@@ -17,7 +17,7 @@ screen = pygame.display.set_mode((s_height,s_width))
 pygame.display.set_caption('Astro Clash')
 
 font_path = r'F:\Projects\Pygame\assets\PressStart2P-Regular.ttf'
-## adasda
+
 font30 = pygame.font.Font(font_path, 30)
 font40 = pygame.font.Font(font_path, 40)
 

@@ -16,28 +16,28 @@ s_width = 800
 screen = pygame.display.set_mode((s_height,s_width))
 pygame.display.set_caption('Astro Clash')
 
-font_path = r'F:\Projects\Pygame\assests\PressStart2P-Regular.ttf'
+font_path = r'F:\Projects\Pygame\assets\PressStart2P-Regular.ttf'
 
 font30 = pygame.font.Font(font_path, 30)
 font40 = pygame.font.Font(font_path, 40)
 
-pygame_icon = pygame.image.load(r'F:\Projects\Pygame\assests\icon.png')
-pygame.display.set_icon(pygame_icon, 10 ,10)
+pygame_icon = pygame.image.load(r'F:\Projects\Pygame\assets\icon.png')
+pygame.display.set_icon(pygame_icon)
 
-laser_fx = pygame.mixer.Sound(r'F:\Projects\Pygame\assests\blaster.mp3')
+laser_fx = pygame.mixer.Sound(r'F:\Projects\Pygame\assets\blaster.mp3')
 laser_fx.set_volume(0.4)
 
-game_over_fx = pygame.mixer.Sound(r'F:\Projects\Pygame\assests\game_over.mp3')
+game_over_fx = pygame.mixer.Sound(r'F:\Projects\Pygame\assets\game_over.mp3')
 game_over_fx.set_volume(1)
 
-blast_fx= pygame.mixer.Sound(r'F:\Projects\Pygame\assests\blast.mp3')
+blast_fx= pygame.mixer.Sound(r'F:\Projects\Pygame\assets\blast.mp3')
 blast_fx.set_volume(0.125)
 
-countdown_fx= pygame.mixer.Sound(r'F:\Projects\Pygame\assests\countdown.mp3')
+countdown_fx= pygame.mixer.Sound(r'F:\Projects\Pygame\assets\countdown.mp3')
 countdown_fx.set_volume(0.125)
 
 
-background = pygame.image.load(r'F:\Projects\Pygame\assests\space_bg.png')
+background = pygame.image.load(r'F:\Projects\Pygame\assets\space_bg.png')
 
 clock = pygame.time.Clock()
 fps = 60
@@ -76,7 +76,7 @@ def draw_text(text, font, text_col, x, y):
 class Spacecraft(pygame.sprite.Sprite):
     def __init__(self, x, y):
         pygame.sprite.Sprite.__init__(self)
-        self.original_image = pygame.image.load(r'F:\Projects\Pygame\assests\spacecraft.png')
+        self.original_image = pygame.image.load(r'F:\Projects\Pygame\assets\spacecraft.png')
         self.image = pygame.transform.scale(self.original_image, (80, 80))
         self.rect = self.image.get_rect()
         self.rect.center = [x, y]
@@ -111,7 +111,7 @@ class Lasers(pygame.sprite.Sprite):
 
     def __init__(self, x, y):
         pygame.sprite.Sprite.__init__(self)
-        self.original_image = pygame.image.load(r'F:\Projects\Pygame\assests\laser.png')
+        self.original_image = pygame.image.load(r'F:\Projects\Pygame\assets\laser.png')
         self.image = pygame.transform.scale(self.original_image, (60, 60))
         self.rect = self.image.get_rect()
         self.rect.center = [x, y]
@@ -133,7 +133,7 @@ class Lasers(pygame.sprite.Sprite):
 class Asteroids(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
-        self.original_image = pygame.image.load(r'F:\Projects\Pygame\assests\asteroid.png')
+        self.original_image = pygame.image.load(r'F:\Projects\Pygame\assets\asteroid.png')
         self.image = pygame.transform.scale(self.original_image, (70,70))
         self.rect = self.image.get_rect()
         
@@ -163,7 +163,7 @@ class Blast(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         self.images = []
         for num in range(1,6):
-            img = pygame.image.load(f'F:\Projects\Pygame\\assests\exp{num}.png')
+            img = pygame.image.load(f'F:\Projects\Pygame\\assets\exp{num}.png')
             if size == 1:
                 img = pygame.transform.scale(img, (20,20))
             if size == 2:

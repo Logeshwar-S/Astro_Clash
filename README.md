@@ -26,6 +26,10 @@ To play the game.
 4. Your score increases by 1 point for each asteroid destroyed.
 5. If the game ends, press R to restart.
 
+## Demo
+
+https://github.com/Logeshwar-S/Astro_Clash/assets/83489133/cb9aafc5-500f-4cc6-b391-1e77d25c1aac
+
 ## Assets
 
 Ensure all asset paths in the code are correctly pointing to the location of your assets. The assets directory should contain all necessary images, sounds, and the font file.
